@@ -20,12 +20,19 @@ import SidebarOption from "../SidebarOption/SidebarOption";
 // CSS
 import "./Sidebar.css";
 
+// Redux
+import { useDispatch } from "react-redux";
+import { openSendMessage } from "../../features/mailSlice";
+
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="sidebar">
       <Button
         startIcon={<AddIcon fontSize="large" />}
         className="sidebar__compose"
+        onClick={() => dispatch(openSendMessage())}
       >
         Compose
       </Button>
