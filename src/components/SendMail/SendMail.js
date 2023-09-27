@@ -16,6 +16,7 @@ import { closeSendMessage } from "../../features/mailSlice";
 
 // Firebase
 import { db } from "../../firebase";
+import firebase from "firebase/compat/app";
 
 const SendMail = () => {
   const {
@@ -28,8 +29,12 @@ const SendMail = () => {
   const onSubmit = (formData) => {
     console.log(formData);
     db.collection("email").add({
-      to: 
+      to: formData.to,
+      subject: formData.subject,
+      message: formData.message,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
+    dispatch(closeSendMessage());
   };
 
   const dispatch = useDispatch();
