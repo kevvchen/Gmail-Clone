@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { closeSendMessage } from "../../features/mailSlice";
 
 // Firebase
-import { db } from "../../firebase";
+import { db } from "../../config/firebase";
 import firebase from "firebase/compat/app";
 
 const SendMail = () => {

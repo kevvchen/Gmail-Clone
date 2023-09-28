@@ -21,7 +21,7 @@ import EmailRow from "../EmailRow/EmailRow";
 import "./EmailList.css";
 
 // firebaase
-import { db } from "../../firebase";
+import { db } from "../../config/firebase";
 
 const EmailList = () => {
   const [emails, setEmails] = useState([]);
