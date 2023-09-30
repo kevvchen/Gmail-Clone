@@ -11,7 +11,21 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 // CSS
 import "./Header.css";
 
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "../../features/userSlice";
+import { auth } from "../../config/firebase";
+
 const Header = () => {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const signOut = () => {
+    auth.signOut().then(() => {
+      dispatch(logout());
+    });
+  };
+
   return (
     <div className="header">
       <div className="header__left">
@@ -40,7 +54,7 @@ const Header = () => {
         <IconButton>
           <NotificationsIcon />
         </IconButton>
-        <Avatar />
+        <Avatar className="avatar" src={user?.photoUrl} onClick={signOut} />
       </div>
     </div>
   );
